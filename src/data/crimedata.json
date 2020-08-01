@@ -1,0 +1,358 @@
+[ 
+    {
+        "crime": {
+            "crimename": "Ransomware",
+            "keywords": ["ransomware","encrypted", "locked", "password", "payment", "pay", "unlock", "demand", "ransom","malware","screen","blackmail","control","hang","computer","device", "email", "mail", "download", "decrypt", "encrypt", "decrypted"],
+            "confirmquestion": {
+                "type": "polar",
+                "length": null,
+                "question": "So are you here to register complaint for ransomware?",
+                "field": "confirm user",
+                "haveSubQuestion": false
+            },
+            "questions": [
+                {
+                    "type": "varchar",
+                    "length": null,
+                    "question": "Tell me the time of the incident?",
+                    "field": "time of occurence",
+                    "haveSubQuestion": false
+                },
+                {
+                    "type": "varchar",
+                    "length": null,
+                    "question": "Tell me the date of the incident?",
+                    "field": "date of occurence",
+                    "haveSubQuestion": false
+                },
+                {
+                    "type": "varchar",
+                    "length": null,
+                    "question": "How much ransom money is demanded?",
+                    "field": "Ransom demanded",
+                    "haveSubQuestion": false
+                },
+                {
+                    "type": "text",
+                    "length": null,
+                    "question": "Have you paid any money? if Paid by which means did you pay the amount Card/e-wallet/Net-Banking?",
+                    "field": "Means of Payment",
+                    "haveSubQuestion": true,
+                    "subQuestion":[
+                        {
+                                "answersKeywords": ["card","debit","credit","wallet","ewallet","paytm","phonepe","google","pay"],
+                                "question":[
+                                    {
+                                        "type": "numeric",
+                                        "length": null,
+                                        "question": "How much did you pay?",
+                                        "field":"Amount Paid",
+                                        "haveSubQuestion": false
+                                    },
+                                    {
+                                        "type": "text",
+                                        "length": null,
+                                        "question": "What was the Transaction ID of your Payment ?",
+                                        "field": "Means Of Payment",
+                                        "haveSubQuestion": false
+                                    }
+                                    
+                                ]
+                        },
+                         {
+                                "answersKeywords": ["No","false","not","didn't","did'nt"],
+                                "question":[
+                                    {
+                                        "type": "polar",
+                                        "length": null,
+                                        "question": "So you have not paid any amount?",
+                                        "field":"Confirming whether ransom paid or not",
+                                        "haveSubQuestion": false
+                                    }
+                                ]
+                        }
+                    ]
+                },
+                {
+                    "type": "polar",
+                    "length": null,
+                    "question": "Do you have any backup of your encrypted Data?",
+                    "field": "Backup",
+                    "haveSubQuestion": false
+                },
+                {
+                    "type": "polar",
+                    "length": null,
+                    "question": "Did you contact any lawyer?",
+                    "field": "Lawyer",
+                    "haveSubQuestion": false
+                },
+                {
+                    "type": "text",
+                    "length": null,
+                    "question": "Do you want to add any extra information? Add if any.",
+                    "field": "Extra Information ",
+                    "haveSubQuestion": false
+                }
+            ]
+        }
+    },
+    {
+        "crime": {
+            "crimename": "Phishing",
+            "keywords": ["mail","email","telephone","phone","text","messages","otp","information","username","password","gift","phishing","phishing"],
+            "confirmquestion":{
+                "type": "polar",
+                "length": null,
+                "question": "So are you here to register complaint for phishing?" ,
+                "field": "confirm user",
+                "haveSubQuestion": false
+            },
+            "questions": [
+                {
+                    "type": "text",
+                    "length": null,
+                    "question": "Where did the incident occurred? <br>Facebook<br>Instagram<br>WhatsApp<br>Email<br>SnapChat<br>Twitter<br>Youtube<br>Tinder<br>LinkedIn<br>Telegram<br>Reddit<br>Hike<br><Tumblr<br>Slack<br>WebSite<br>Other",
+                    "field" : "Place of occurence",
+                    "haveSubQuestion": true,
+                    "subQuestion" :[
+                        {
+                                "answersKeywords": ["facebook","fb"],
+                                "question":[
+                                    {
+                                        "type": "varchar",
+                                        "length": 16,
+                                        "question": "Enter your email/phone associated with Facebook account ?",
+                                        "field": "Email/phoneno associated with Facebook",
+                                        "haveSubQuestion": false
+                                    },
+                                    {
+                                        "type": "varchar",
+                                        "length": null,
+                                        "question": "Enter your facebook profile link?",
+                                        "field":"Facebook Link ",
+                                        "haveSubQuestion": false
+                                    }
+                                ]
+                        },
+                        {
+                                "answersKeywords": ["instagram","insta","ig"],
+                                "question":[
+                                    {
+                                        "type": "text",
+                                        "length": 16,
+                                        "question": "Enter your Instagram ID?",
+                                        "field": "Instagram Id",
+                                        "haveSubQuestion": false
+                                    },
+                                    {
+                                        "type": "text",
+                                        "length": null,
+                                        "question": "Share your Instagram profile link?",
+                                        "field":"Instagram Link",
+                                        "haveSubQuestion": false
+                                    }
+                                ]
+                        }
+                    ]
+                },
+                {
+                    "type": "varchar",
+                    "length": null,
+                    "question": "When did it take place?",
+                    "field" : "Time Of occurence ",
+                    "haveSubQuestion": false
+                },
+                {
+                    "type": "text",
+                    "length": null,
+                    "question": "Did you reveal any Credit card / Debit card information?",
+                    "field": "Card Details Revealed",
+                    "haveSubQuestion": true,
+                    "subQuestion":[
+                        {
+                                "answersKeywords": ["true","yes"],
+                                "question":[
+                                    {
+                                        "type": "numeric",
+                                        "length": 16,
+                                        "question": "Enter your credit card / debit card no.",
+                                        "field": "Debit / Credit Card No",
+                                        "haveSubQuestion": false
+                                    },
+                                    {
+                                        "type": "varchar",
+                                        "length": null,
+                                        "question": "Enter the expiry date of credit card / debit card ?",
+                                        "field":"expiry Date ",
+                                        "haveSubQuestion": false
+                                    }
+                                ]
+                        }
+                ]
+                },
+                {
+                    "type": "text",
+                    "length": null,
+                    "question": "If you want to provide any additional information please do so.",
+                    "field": "Extra Information ",
+                    "haveSubQuestion": false
+                }
+            ]
+        }
+    },
+    {
+        "crime": {
+            "crimename": "Stalking",
+            "keywords": ["stalking","stalk", "stalks", "creep", "creeps", "follow", "follows", "monitors", "monitor", "monitoring"],
+            "confirmquestion":{
+                "type": "polar",
+                "length": null,
+                "question": "So are you here to register complaint for stalking?" ,
+                "field": "confirm user",
+                "haveSubQuestion": false
+            },
+            "questions": [
+                {
+                    "type": "text",
+                    "length": null,
+                    "question": "On which website is the victim being stalked?",
+                    "haveSubQuestion": false
+                },
+                {
+                    "type": "polar",
+                    "length": null,
+                    "question": "Is the stalker threatening you?",
+                    "field": "Threats",
+                    "haveSubQuestion": true,
+                    "subQuestion":[
+                        {
+                                "answersKeywords": ["true","yes"],
+                                "question":[
+                                    {
+                                        "type": "text",
+                                        "length": null,
+                                        "question": "What kind of threats is he/she giving you?",
+                                        "field": "Kind of threats",
+                                        "haveSubQuestion": false
+                                    }
+                                ]
+                        }
+                ]
+                },
+                {
+                    "type": "polar",
+                    "length": null,
+                    "question": "Do you know the stalker?",
+                    "field": "Stalker details",
+                    "haveSubQuestion": true,
+                    "subQuestion":[
+                        {
+                                "answersKeywords": ["true","yes"],
+                                "question":[
+                                    {
+                                        "type": "text",
+                                        "length": null,
+                                        "question": "Enter all the details of stalker that you know",
+                                        "field": "Details of stalker",
+                                        "haveSubQuestion": false
+                                    }
+                                ]
+                        }
+                ]
+                },
+                {
+                    "type": "polar",
+                    "length": null,
+                    "question": "Did you share any personal information with the stalker?",
+                    "field": "Information shared",
+                    "haveSubQuestion": true,
+                    "subQuestion":[
+                        {
+                                "answersKeywords": ["true","yes"],
+                                "question":[
+                                    {
+                                        "type": "text",
+                                        "length": null,
+                                        "question": "What did you share?",
+                                        "field": "Information shared with the stalker",
+                                        "haveSubQuestion": false
+                                    }
+                                ]
+                        }
+                ]
+                },
+                {
+                    "type": "text",
+                    "length": null,
+                    "question": "Do you want to add any extra information? Add if any.",
+                    "field": "Extra Information ",
+                    "haveSubQuestion": false
+                }  
+            ]
+        }
+    },
+    {
+        "crime": {
+            "crimename": "sextortion",
+            "keywords": ["photo","photos","video","videos","photograph","sextortion","extortion","explicit","images","private","blackmail","black", "mail", "demand", "pay", "payment"],
+            "confirmquestion":{
+                "type": "polar",
+                "length": null,
+                "question": "So are you here to register complaint for sextortion?" ,
+                "field": "confirm user",
+                "haveSubQuestion": false
+            },
+            "questions": [
+                {
+                    "type": "text",
+                    "length": null,
+                    "question": "On which website did the sextortion take place?",
+                    "field": "Website on which sextortion took place",
+                    "haveSubQuestion": false
+                },
+                {
+                    "type": "text",
+                    "length": null,
+                    "question": "Who was being sextorted?",
+                    "field": "The person being sextorted",
+                    "haveSubQuestion": false
+                },
+                {
+                    "type": "text",
+                    "length": null,
+                    "question": "What kind of private media did the victim share?",
+                    "field": "Kind of private media shared",
+                    "haveSubQuestion": false
+                },
+                {
+                    "type": "polar",
+                    "length": null,
+                    "question": "Do you know the accused?",
+                    "haveSubQuestion": true,
+                    "subQuestion":[
+                        {
+                                "answersKeywords": ["true","yes"],
+                                "question":[
+                                    {
+                                        "type": "text",
+                                        "length": null,
+                                        "question":"Enter all the information about the person who sextorted.",
+                                        "field": "Information about the sextorter",
+                                        "haveSubQuestion": false
+                                    }
+                                ]
+                        }
+                ]
+                },
+                {
+                    "type": "text",
+                    "length": null,
+                    "question": "Do you want to add any extra information? ",
+                    "field": "Extra Information ",
+                    "haveSubQuestion": false
+                }
+            ]
+        }
+    }
+]

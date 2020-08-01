@@ -1,0 +1,9 @@
+#for linux
+ "scripts": {
+    "start": "rm -rf ./anticrimechatbot && rm -rf ./.cache && parcel public/index.html --out-dir anticrimechatbot -p 3000",
+    "build": "parcel build public/index.html --out-dir dist --public-url ./",
+    "clear": "rm -rf ./anticrimechatbot && rm -rf ./.cache",
+    "destroy": "rm -rf ./dist"
+  },
+
+#for windows

@@ -1,0 +1,167 @@
+{
+        "NLPData":{
+                "stopwords":["","a","about","above","after","again","against","all","am","an","and","any","are","aren't","as","at","be","because","been","before","being","below",
+                            "between","both","but","by","can't","cannot","could","couldn't","did","didn't","do","does","doesn't","doing","don't","down","during","each","few",
+                            "for","from","further","had","hadn't","has","hasn't","have","haven't","having","he","he'd","he'll","he's","her","here","here's","hers","herself",
+                            "him","himself","his","how","how's","i","i'd","i'll","i'm","i've","if","in","into","is","isn't","it","it's","its","itself","let's","me","more",
+                            "most","mustn't","my","myself","nor","not","of","off","on","once","only","or","other","ought","our","ours","ourselves","out","over","own",
+                            "s","same","shan't","she","she'd","she'll","she's","should","shouldn't","so","some","such","than","that","that's","the","their","theirs","them",
+                            "themselves","then","there","there's","these","they","they'd","they'll","they're","they've","this","those","through","to","too","under","until",
+                            "up","very","was","wasn't","we","we'd","we'll","we're","we've","were","weren't","what","what's","when","when's","where","where's","which","while",
+                            "who","who's","whom","why","why's","with","won't","would","wouldn't","you","you'd","you'll","you're","you've","your","yours","yourself"]
+            },
+         "ChabotDialogue" : {
+                 "anonymousGreeting":"Hey.. <br>So you are going to register your Crime anonymously.",
+                 "anonymousDescriptionProcessStart":"Now I will ask you details about the crime happened with you by asking question one by one. Read the question Carefully and then answer correctly. <b>Let's Start...</br>",
+                 "greeting":"I am Crime Registering Chatbot. I am here to help you to register your complaint you just have to follow my instruction.",
+                 "askingDetailProcessExplain": "Now I will ask you questions one by one to take your personal details. you have to answer it correctly. <b>Let's Start...</br>",
+                 "allPersonalDetailTakenMessage":"I have taken your personal details now i will take details about your cyber crime",
+                 "lengthIsNotAsExpected": "your reponse is not valid. May be the length of input is not as expected",
+                 "invalidResponse" : "Your reponse in invalid. Read the question again and answer it properly",
+                 "emailIsInvalid": "your entered email id is invalid",
+                 "responseIsNotPolar": "You response should yes/no or true/false",
+                 "startTakingDetailsOfCrime": "I have taken your personal details now i will take details about your cyber crime",
+                 "descriptionNotAsExpected" : "I am not able to understand what you are saying. Can you please ellaborate the description of incident. I am again asking the question.",
+                 "descriptionNotAsExpectedNotConfirm" : "Can you please ellaborate the incident. Use simple and direct words. I am asking question again",
+                 "responseNotAsExpected": "Your Response in invalid. Please read question again and give response as per that. I am asking question again",
+                 "crimeRecognizedMessage" : "I have recognized the crime. Now I will ask you question related to incident. Some question may be repeated for confirming purpose." ,
+                 "allCrimeDataTaken" : "Thank you, all information about crime is taken.",
+                 "lastMessage" : "All Information and confirmation has been taken. <b>Happy to help you</b>"
+            },
+         "PesonalDetailQuestions" : [
+            {
+                    "type": "text",
+                    "length": null,
+                    "question": "Where do you live? Enter your complete Address.",
+                    "field":"Address",
+                    "haveSubQuestion": false
+            },
+            
+            {
+                    "type": "text",
+                    "length": null,
+                    "question": "What is your Gender? Male, Female or other?",
+                    "field": "Gender",
+                    "haveSubQuestion": true,
+                    "subQuestion":[
+                            {
+                                    "answersKeywords": ["male","m"],
+                                    "question":[
+                                            {
+                                                    "type": "polar",
+                                                    "length": null,
+                                                    "question": "Gender : Male , Please Confirm (yes/no).",
+                                                    "field": "Gender",
+                                                    "haveSubQuestion": false
+                                            }
+                                    ]
+                            },
+                            {
+                                    "answersKeywords": ["female","f"],
+                                    "question":[
+                                            {
+                                                    "type": "polar",
+                                                    "length": null,
+                                                    "question": "Gender : Female , Please Confirm (yes/no).",
+                                                    "field": "Gender",
+                                                    "haveSubQuestion": false
+                                            }
+                                    ]
+                            },
+                            {
+                                    "answersKeywords": ["other", "o"],
+                                    "question":[
+                                            {
+                                                    "type": "polar",
+                                                    "length": null,
+                                                    "question": "Gender : Other , Please Confirm (yes/no).",
+                                                    "field": "Gender",
+                                                    "haveSubQuestion": false 
+                                            }
+                                    ]
+                            }
+                    ]
+    
+            },
+            {
+                    "type": "text",
+                    "length": null,
+                    "question": "What is your Date of Birth ?",
+                    "field": "DOB",
+                    "haveSubQuestion": false
+            },
+            {
+                    "type": "email",
+                    "length": null,
+                    "question": "Please provide your email id.",
+                    "field": "Email Id",
+                    "haveSubQuestion": false
+            },
+            {
+                    "type": "text",
+                    "length": null,
+                    "question": "Which identity proof do you have? <br><b>*</b>Aadhar Card <br><b>*</b>Pan Card <br><b>*</b>Driving Licence",
+                    "field": "Authentication Proof",
+                    "haveSubQuestion": true,
+                    "subQuestion":[
+                            {
+                                    "answersKeywords": ["aadhar","adhar","aadhaar","adhaar"],
+                                    "question":[
+                                            {
+                                                    "type": "numeric",
+                                                    "length": 12,
+                                                    "question": "What is your Aadhaar Card number?",
+                                                    "field": "Aadhaar Card No",
+                                                    "haveSubQuestion": false
+                                            },
+                                            {
+                                                    "type": "text",
+                                                    "length": null,
+                                                    "question": "What is your name as per Aadhaar Card number?",
+                                                    "field": "Name on Aadhaar Card",
+                                                    "haveSubQuestion": false
+                                            }
+                                    ]
+                            },
+                            {
+                                    "answersKeywords": ["pan"],
+                                    "question":[
+                                            {
+                                                    "type": "numeric",
+                                                    "length": 12,
+                                                    "question": "What is your Pan Card number?",
+                                                    "field": "Pan Card No",
+                                                    "haveSubQuestion": false
+                                            }
+                                    ]
+                            },
+                            {
+                                    "answersKeywords": ["driving","licence"],
+                                    "question":[
+                                            {
+                                                    "type": "numeric",
+                                                    "length": 12,
+                                                    "question": "What is your Driving Card number?",
+                                                    "field": "Driving Card No",
+                                                    "haveSubQuestion": false
+                                            }
+                                    ]
+                            }
+                    ]
+            }
+         ],
+         "DescriptionQuestion" : {
+            "type": "text",
+            "length": null,
+            "question": "Please describe the whole incident that happened with you in detail.",
+            "field": "Description",
+            "haveSubQuestion": false
+         },
+         "confirmTermCondition" : {
+            "type": "polar",
+            "length": null,
+            "question": "All the information provided by you is genuine. You are not registering this complaint under anyone's threat. If you agree answer in yes/no.",
+            "field": "Description",
+            "haveSubQuestion": false
+         }      
+    }
