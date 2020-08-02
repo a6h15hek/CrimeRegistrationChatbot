@@ -30,46 +30,63 @@ class Acknowledgement extends HTMLElement{
            </tr>
            <tr>
               <td>Complaint Reference Number</td>
-              <td id="ComplaintId">CUR18119960</td>
+              <td id="ComplaintId"></td>
            </tr>
            <tr>
               <td>Date and Time of complaint</td>
-              <td id="DateTime">20-07-2020  14:27</td>
+              <td id="DateTime"></td>
            </tr>
            <tr>
               <td>Complaint Name</td>
-              <td id="Name">Ramakrishnan Swami</td>
+              <td id="Name"></td>
            </tr>
            <tr>
-              <td>Complaint To</td>
-              <td id="ComplaintTo">Ariyalur</td>
+              <td>State</td>
+              <td id="state"></td>
+           </tr>
+           <tr>
+              <td>Phone No</td>
+              <td id="phone-no">Ariyalur</td>
            </tr>
            <tr>
               <td>Subject</td>
-              <td id="Subject">Document Missing</td>
-           </tr>
-           <tr>
-              <td>Current Information</td>
-              <td id="Information">no. 1/1254,pookkara street, Ariyalur, Mobile No:123456789, email Id.: abc@xyz.com</td>
+              <td id="Subject"></td>
            </tr>
            <tr>
               <td>Uploaded Documents</td>
               <td id="Documents">NO</td>
            </tr>
-           <tr>
-              <td>Other Details</td>
-              <td id="OtherDetails">Document was last submitted to BOI,Ariyalur</td>
-           </tr>
         </table>
-        <form>
-           <input type="button" value="Go back!" onclick="history.go(-1)"/>
-           <input type="button" value="Print" onclick="window.print()"/>
+        <form style="margin:20px 0px">
+           <input type="button" class="btn btn-primary btn-lg" value="Go back!" onclick="history.go(-1)"/>
+           <input type="button" class="btn btn-primary btn-lg" value="Print" onclick="window.print()"/>
         </form>
         <!---End of Acknowledgment Code-->`;
 
     }
    connectedCallback() {
-      
+      console.log(this.getAttribute("ComplaintId"));
+      if (this.getAttribute("ComplaintId") != null && this.getAttribute("ComplaintId") != undefined ){
+         this.setComplaintId(this.getAttribute("ComplaintId"))
+      }
+      if (this.getAttribute("dateAndTime") != null && this.getAttribute("dateAndTime") != undefined) {
+         this.setDateTime(this.getAttribute("dateAndTime"))
+      }
+      if (this.getAttribute("NameOfComplainant") != null && this.getAttribute("NameOfComplainant") != undefined) {
+         this.setName(this.getAttribute("NameOfComplainant"))
+      }
+      if (this.getAttribute("Subject") != null && this.getAttribute("Subject") != undefined) {
+         this.setSubject(this.getAttribute("Subject"))
+      }
+      if (this.getAttribute("phoneNo") != null && this.getAttribute("phoneNo") != undefined) {
+         this.setPhoneNo(this.getAttribute("phoneNo"))
+      }
+      if (this.getAttribute("state") != null && this.getAttribute("state") != undefined) {
+         this.setState(this.getAttribute("state"))
+      }
+      if (this.getAttribute("documentUploaded") != null && this.getAttribute("documentUploaded") != undefined) {
+         this.setDocuments(this.getAttribute("documentUploaded"));
+      }
    }
    static get observedAttributes() {
       return ['data'];
@@ -97,11 +114,11 @@ class Acknowledgement extends HTMLElement{
    getName(){
       return document.getElementById('Name').innerHTML;
    }
-   setComplaintTo(complaintto){
-      document.getElementById('ComplaintTo').innerHTML=complaintto;
+   setState(state){
+      document.getElementById('state').innerHTML=state;
    }
-   getComplaintTo(){
-      return document.getElementById('ComplaintTo').innerHTML;
+   getState(){
+      return document.getElementById('state').innerHTML;
    }
    setSubject(subject){
       document.getElementById('Subject').innerHTML=subject;
@@ -109,23 +126,14 @@ class Acknowledgement extends HTMLElement{
    getSubject(){
       return document.getElementById('Subject').innerHTML;
    }
-   setInformation(information){
-      document.getElementById('Information').innerHTML=information;
-   }
-   getInformation(){
-      return document.getElementById('Information').innerHTML;
-   }
    setDocuments(documents){
       document.getElementById('Documents').innerHTML=documents;
    }
    getDocuments(){
       return document.getElementById('Documents').innerHTML;
    }
-   setOtherDetails(otherdetails){
-      document.getElementById('OtherDetails').innerHTML=otherdetails;
-   }
-   getOtherDetails(){
-      return document.getElementById('OtherDetails').innerHTML;
+   setPhoneNo(phoneNo){
+      document.getElementById('phone-no').innerHTML = phoneNo;
    }
 }
 export default Acknowledgement;

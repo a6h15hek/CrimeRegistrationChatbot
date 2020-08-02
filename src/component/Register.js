@@ -1,14 +1,14 @@
-import firebase from './InitializeDatabase';
-import 'firebase/firebase-auth';
+import firebase from "./InitializeDatabase";
+import "firebase/firebase-auth";
 import $, { contains } from "jquery";
 class Register extends HTMLElement {
-    //initialize global variable
-    firebaseApp = null;
-    userInfo=null;
-    constructor(firebaseApp) {
-        super();
-        this.firebaseApp = firebase;
-        this.innerHTML = `
+  //initialize global variable
+  firebaseApp = null;
+  userInfo = null;
+  constructor(firebaseApp) {
+    super();
+    this.firebaseApp = firebase;
+    this.innerHTML = `
         <style>
             #form{
 			background-color: #f5f5f5;
@@ -144,141 +144,162 @@ class Register extends HTMLElement {
         </div>
     </div>
              `;
-    }
-    connectedCallback() {
-        //called  after constructor
-        document.getElementById('sign-in-button').addEventListener('click', () => this.signingIn());
-        document.getElementById('verify-code-button').addEventListener('click', () => this.verifyOtp());
-        document.getElementById('cancel-verify-code-button').addEventListener('click', (e) => this.cancelVerification(e));
+  }
+  connectedCallback() {
+    //called  after constructor
+    document
+      .getElementById("sign-in-button")
+      .addEventListener("click", () => this.signingIn());
+    document
+      .getElementById("verify-code-button")
+      .addEventListener("click", () => this.verifyOtp());
+    document
+      .getElementById("cancel-verify-code-button")
+      .addEventListener("click", (e) => this.cancelVerification(e));
 
-        //inserting captcha in screen
-        window.recaptchaVerifier = new this.firebaseApp.auth.RecaptchaVerifier('recaptcha-container', {
-            'size': 'normal',
-            'callback': function (response) {
-                // reCAPTCHA solved, allow signInWithPhoneNumber.
-            },
-            'expired-callback': function () {
-                // Response expired. Ask user to solve reCAPTCHA again.
-            }
+    //inserting captcha in screen
+    window.recaptchaVerifier = new this.firebaseApp.auth.RecaptchaVerifier(
+      "recaptcha-container",
+      {
+        size: "normal",
+        callback: function (response) {
+          // reCAPTCHA solved, allow signInWithPhoneNumber.
+        },
+        "expired-callback": function () {
+          // Response expired. Ask user to solve reCAPTCHA again.
+        },
+      }
+    );
+    //making captcha visible
+    recaptchaVerifier.render().then(function (widgetId) {
+      window.recaptchaWidgetId = widgetId;
+    });
+  }
+
+  //sign in functions *****************************************
+  isAllInputDataValid(userInfo, msgstatus, debugMessageLayout) {
+    debugMessageLayout.classList.remove("alert-success");
+    debugMessageLayout.classList.add("alert-danger");
+    if (userInfo.name == null || userInfo.name.length == 0) {
+      msgstatus.innerHTML = "Empty name Field !!";
+      document.getElementById("name").focus();
+      debugMessageLayout.classList.remove("collapse");
+      return false;
+    }
+    if (userInfo.state == null || userInfo.state.length == 0) {
+      msgstatus.innerHTML = "Empty State field !!";
+      document.getElementById("state").focus();
+      debugMessageLayout.classList.remove("collapse");
+      return false;
+    }
+    if (userInfo.phoneno == null || userInfo.phoneno.length == 0) {
+      msgstatus.innerHTML = "Empty phone No";
+      document.getElementById("phone-number").focus();
+      debugMessageLayout.classList.remove("collapse");
+      return false;
+    }
+    var pattern = /^[789]\d{9}$/;
+    if (userInfo.phoneno.search(pattern) == -1) {
+      msgstatus.innerHTML = "Invalid Input phone no !!";
+      document.getElementById("phone-number").focus();
+      debugMessageLayout.classList.remove("collapse");
+      return false;
+    }
+    return true;
+  }
+  signingIn() {
+    this.userInfo = {
+      name: document.getElementById("name").value,
+      state: document.getElementById("state").value,
+      phoneno: document.getElementById("phone-number").value,
+    };
+    var msgstatus = document.getElementById("messageDebug");
+    var debugMessageLayout = document.getElementById("debugMessageLayout");
+
+    if (
+      !this.isAllInputDataValid(this.userInfo, msgstatus, debugMessageLayout)
+    ) {
+      return;
+    }
+    this.userInfo.phoneno = "+91" + this.userInfo.phoneno;
+
+    if (!this.isCaptchaOK()) {
+      msgstatus.innerHTML = "Empty Captcha !!";
+      debugMessageLayout.classList.remove("collapse");
+      return;
+    }
+    ///
+    window.signingIn = true;
+    this.userInfo.appVerifier = window.recaptchaVerifier;
+    this.signingInSendOTP();
+  }
+
+  signingInSendOTP() {
+    this.firebaseApp
+      .auth()
+      .signInWithPhoneNumber(this.userInfo.phoneno, this.userInfo.appVerifier)
+      .then(function (confirmationResult) {
+        // SMS sent. Prompt user to type the code from the message, then sign the
+        // user in with confirmationResult.confirm(code).
+        window.confirmationResult = confirmationResult;
+        window.signingIn = false;
+        document.getElementById("messageDebug").innerHTML = " OTP sent !";
+        var DebugMessageLayout = document.getElementById("debugMessageLayout");
+        DebugMessageLayout.classList.remove("alert-danger");
+        DebugMessageLayout.classList.remove("collapse");
+        DebugMessageLayout.classList.add("alert-success");
+        $("#modalSubscriptionForm").modal({
+          backdrop: "static",
+          keyboard: false,
         });
-        //making captcha visible
-        recaptchaVerifier.render().then(function (widgetId) {
-            window.recaptchaWidgetId = widgetId;
-        });
-    }
+      })
+      .catch(function (error) {
+        document.getElementById("messageDebug").innerHTML =
+          " OTP not sent !" + error;
+        var DebugMessageLayout = document.getElementById("debugMessageLayout");
+        DebugMessageLayout.classList.remove("alert-success");
+        DebugMessageLayout.classList.remove("collapse");
+        DebugMessageLayout.classList.add("alert-danger");
+        // Error; SMS not sent
+        window.signingIn = false;
+        // ...
+      });
+  }
 
-    //sign in functions *****************************************
-    isAllInputDataValid(userInfo, msgstatus, debugMessageLayout){
-        debugMessageLayout.classList.remove("alert-success");
-        debugMessageLayout.classList.add("alert-danger");
-        if (userInfo.name == null || userInfo.name.length == 0) {
-            msgstatus.innerHTML = "Empty name Field !!"
-            document.getElementById('name').focus();
-            debugMessageLayout.classList.remove("collapse");
-            return false;
-        }
-        if (userInfo.state == null || userInfo.state.length == 0) {
-            msgstatus.innerHTML = "Empty State field !!"
-            document.getElementById('state').focus();
-            debugMessageLayout.classList.remove("collapse");
-            return false;
-        }
-        if (userInfo.phoneno == null || userInfo.phoneno.length == 0) {
-            msgstatus.innerHTML = "Empty phone No"
-            document.getElementById('phone-number').focus();
-            debugMessageLayout.classList.remove("collapse");
-            return false;
-        }
-        var pattern = /^[789]\d{9}$/;
-        if (userInfo.phoneno.search(pattern) == -1) {
-            msgstatus.innerHTML = "Invalid Input phone no !!"
-            document.getElementById('phone-number').focus();
-            debugMessageLayout.classList.remove("collapse");
-            return false;
-        }
-        return true;
+  verifyOtp() {
+    var OTPcode = document.getElementById("verification-code").value;
+    var debugOTPMessageLayout = document.getElementById(
+      "debugOTPMessageLayout"
+    );
+    var msgOtpstatus = document.getElementById("messageOTPDebug");
+    if (OTPcode == null || OTPcode.length == 0) {
+      msgOtpstatus.innerHTML = "Empty otp Field !!";
+      debugOTPMessageLayout.classList.remove("collapse");
+      debugOTPMessageLayout.classList.remove("alert-success");
+      debugOTPMessageLayout.classList.add("alert-danger");
+      return;
     }
-    signingIn(){
-        this.userInfo = {
-            name: document.getElementById('name').value,
-            state: document.getElementById('state').value,
-            phoneno: document.getElementById('phone-number').value,
-        }
-        var msgstatus = document.getElementById('messageDebug');
-        var debugMessageLayout = document.getElementById('debugMessageLayout');
-
-        if (!this.isAllInputDataValid(this.userInfo, msgstatus, debugMessageLayout)){
-            return;
-        }
-        this.userInfo.phoneno = "+91" + this.userInfo.phoneno;
-
-        if(!this.isCaptchaOK()){
-            msgstatus.innerHTML = "Empty Captcha !!"
-            debugMessageLayout.classList.remove("collapse");
-            return;
-        }
-        ///
-        window.signingIn = true;
-        this.userInfo.appVerifier = window.recaptchaVerifier;
-        this.signingInSendOTP();
-    }
-
-    signingInSendOTP(){
-        this.firebaseApp.auth().signInWithPhoneNumber(this.userInfo.phoneno, this.userInfo.appVerifier)
-            .then(function (confirmationResult) {
-                // SMS sent. Prompt user to type the code from the message, then sign the
-                // user in with confirmationResult.confirm(code).
-                window.confirmationResult = confirmationResult;
-                window.signingIn = false;
-                document.getElementById('messageDebug').innerHTML = " OTP sent !"
-                var DebugMessageLayout = document.getElementById('debugMessageLayout');
-                DebugMessageLayout.classList.remove("alert-danger");
-                DebugMessageLayout.classList.remove("collapse");
-                DebugMessageLayout.classList.add("alert-success");
-                $('#modalSubscriptionForm').modal({ backdrop: 'static', keyboard: false });
-            }).catch(function (error) {
-                document.getElementById('messageDebug').innerHTML = " OTP not sent !" + error
-                var DebugMessageLayout = document.getElementById('debugMessageLayout');
-                DebugMessageLayout.classList.remove("alert-success");
-                DebugMessageLayout.classList.remove("collapse");
-                DebugMessageLayout.classList.add("alert-danger");
-                // Error; SMS not sent
-                window.signingIn = false;
-                // ...
-            });
-    }
-
-    verifyOtp(){
-        var OTPcode = document.getElementById('verification-code').value;
-        var debugOTPMessageLayout = document.getElementById('debugOTPMessageLayout');
-        var msgOtpstatus = document.getElementById('messageOTPDebug');
-        if (OTPcode == null || OTPcode.length == 0) {
-            msgOtpstatus.innerHTML = "Empty otp Field !!"
-            debugOTPMessageLayout.classList.remove("collapse");
-            debugOTPMessageLayout.classList.remove("alert-success");
-            debugOTPMessageLayout.classList.add("alert-danger");
-            return;
-        }
-        window.verifyingCode = true;
-        confirmationResult.confirm(OTPcode).then(
-            (result)=>this.signInConfirmed(result,this.userInfo)
-        ).catch(function (error) {
-            // User couldn't sign in (bad verification code?)
-            console.log(error);
-            window.verifyingCode = false;
-            msgOtpstatus.innerHTML = "OTP not matched !!"
-            debugOTPMessageLayout.classList.remove("collapse");
-            debugOTPMessageLayout.classList.remove("alert-success");
-            debugOTPMessageLayout.classList.add("alert-danger");
-        });   
-    }
-    signInConfirmed(result,userInfo){
+    window.verifyingCode = true;
+    confirmationResult
+      .confirm(OTPcode)
+      .then((result) => this.signInConfirmed(result, this.userInfo))
+      .catch(function (error) {
+        // User couldn't sign in (bad verification code?)
+        console.log(error);
         window.verifyingCode = false;
-        window.confirmationResult = null;
-        $('#modalSubscriptionForm').modal('hide');
-        var user = result.user;
-        // account signedIn + verfied now jump dashboard
-       /* var url = new URL(window.location.href)
+        msgOtpstatus.innerHTML = "OTP not matched !!";
+        debugOTPMessageLayout.classList.remove("collapse");
+        debugOTPMessageLayout.classList.remove("alert-success");
+        debugOTPMessageLayout.classList.add("alert-danger");
+      });
+  }
+  signInConfirmed(result, userInfo) {
+    window.verifyingCode = false;
+    window.confirmationResult = null;
+    $("#modalSubscriptionForm").modal("hide");
+    var user = result.user;
+    // account signedIn + verfied now jump dashboard
+    /* var url = new URL(window.location.href)
         url.searchParams.delete("state");
         url.searchParams.delete("phoneNo");
         url.searchParams.delete("name");
@@ -286,31 +307,42 @@ class Register extends HTMLElement {
         url.searchParams.append("phoneNo",userInfo.phoneno);
         url.searchParams.append("name", userInfo.name);
         window.location.replace(url.href);*/
-        //sessionStorage.setItem("name",userInfo.name)
-        sessionStorage.setItem("InitialPersonalDetails", JSON.stringify({name:userInfo.name,state:userInfo.state,phoneno:userInfo.phoneno}));
-    }
+    //sessionStorage.setItem("name",userInfo.name)
+    sessionStorage.setItem(
+      "InitialPersonalDetails",
+      JSON.stringify({
+        name: userInfo.name,
+        state: userInfo.state,
+        phoneno: userInfo.phoneno,
+      })
+    );
+  }
 
-    //end sign in functions ****************************************
-    isCaptchaOK() {
-        if (typeof grecaptcha !== 'undefined' && typeof window.recaptchaWidgetId !== 'undefined') {
-            var recaptchaResponse = grecaptcha.getResponse(window.recaptchaWidgetId);
-            return recaptchaResponse !== '';
-        }
-        return false;
+  //end sign in functions ****************************************
+  isCaptchaOK() {
+    if (
+      typeof grecaptcha !== "undefined" &&
+      typeof window.recaptchaWidgetId !== "undefined"
+    ) {
+      var recaptchaResponse = grecaptcha.getResponse(window.recaptchaWidgetId);
+      return recaptchaResponse !== "";
     }
+    return false;
+  }
 
-    resetReCaptcha() {
-        if (typeof grecaptcha !== 'undefined'
-            && typeof window.recaptchaWidgetId !== 'undefined') {
-            grecaptcha.reset(window.recaptchaWidgetId);
-        }
+  resetReCaptcha() {
+    if (
+      typeof grecaptcha !== "undefined" &&
+      typeof window.recaptchaWidgetId !== "undefined"
+    ) {
+      grecaptcha.reset(window.recaptchaWidgetId);
     }
- 
-    cancelVerification(e) {
-        e.preventDefault();
-        window.confirmationResult = null;
-    }
+  }
 
+  cancelVerification(e) {
+    e.preventDefault();
+    window.confirmationResult = null;
+  }
 }
 
 export default Register;

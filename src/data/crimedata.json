@@ -2,13 +2,14 @@
     {
         "crime": {
             "crimename": "Ransomware",
-            "keywords": ["ransomware","encrypted", "locked", "password", "payment", "pay", "unlock", "demand", "ransom","malware","screen","blackmail","control","hang","computer","device", "email", "mail", "download", "decrypt", "encrypt", "decrypted"],
+            "keywords": ["ransomware","corrupted","corrupt","encrypted", "locked", "password", "payment", "pay", "unlock", "demand", "ransom","malware","screen","blackmail","control","hang","computer","device", "email", "mail", "download", "decrypt", "encrypt", "decrypted"],
             "confirmquestion": {
                 "type": "polar",
                 "length": null,
                 "question": "So are you here to register complaint for ransomware?",
                 "field": "confirm user",
-                "haveSubQuestion": false
+                "haveSubQuestion": false,
+                "awareness": "https://www.csoonline.com/article/3236183/what-is-ransomware-how-it-works-and-how-to-remove-it.html"
             },
             "questions": [
                 {
@@ -16,58 +17,65 @@
                     "length": null,
                     "question": "Tell me the time of the incident?",
                     "field": "time of occurence",
-                    "haveSubQuestion": false
+                    "haveSubQuestion": false,
+                    "awareness": null
                 },
                 {
                     "type": "varchar",
                     "length": null,
                     "question": "Tell me the date of the incident?",
                     "field": "date of occurence",
-                    "haveSubQuestion": false
+                    "haveSubQuestion": false,
+                    "awareness": null
                 },
                 {
                     "type": "varchar",
                     "length": null,
                     "question": "How much ransom money is demanded?",
                     "field": "Ransom demanded",
-                    "haveSubQuestion": false
+                    "haveSubQuestion": false,
+                    "awareness": null
                 },
                 {
                     "type": "text",
                     "length": null,
-                    "question": "Have you paid any money? if Paid by which means did you pay the amount Card/e-wallet/Net-Banking?",
+                    "question": "Have you paid any money? If paid, by which means did you pay the amount Card/e-wallet/Net-Banking?",
                     "field": "Means of Payment",
                     "haveSubQuestion": true,
+                    "awareness": "https://resources.infosecinstitute.com/category/enterprise/securityawareness/employee-security-threats/how-security-awareness-training-can-prevent-a-ransomware-situation/#gref",
                     "subQuestion":[
                         {
-                                "answersKeywords": ["card","debit","credit","wallet","ewallet","paytm","phonepe","google","pay"],
+                                "answersKeywords": ["yes","card","debit","credit","wallet","ewallet","paytm","phonepe","google","pay"],
                                 "question":[
                                     {
                                         "type": "numeric",
                                         "length": null,
                                         "question": "How much did you pay?",
                                         "field":"Amount Paid",
-                                        "haveSubQuestion": false
+                                        "haveSubQuestion": false,
+                                        "awareness": null
                                     },
                                     {
-                                        "type": "text",
+                                        "type": "numeric",
                                         "length": null,
                                         "question": "What was the Transaction ID of your Payment ?",
                                         "field": "Means Of Payment",
-                                        "haveSubQuestion": false
+                                        "haveSubQuestion": false,
+                                        "awareness": null
                                     }
                                     
                                 ]
                         },
                          {
-                                "answersKeywords": ["No","false","not","didn't","did'nt"],
+                                "answersKeywords": ["no","false","not","didn't","did'nt"],
                                 "question":[
                                     {
                                         "type": "polar",
                                         "length": null,
                                         "question": "So you have not paid any amount?",
                                         "field":"Confirming whether ransom paid or not",
-                                        "haveSubQuestion": false
+                                        "haveSubQuestion": false,
+                                        "awareness": null
                                     }
                                 ]
                         }
@@ -78,21 +86,24 @@
                     "length": null,
                     "question": "Do you have any backup of your encrypted Data?",
                     "field": "Backup",
-                    "haveSubQuestion": false
+                    "haveSubQuestion": false,
+                    "awareness": null
                 },
                 {
                     "type": "polar",
                     "length": null,
                     "question": "Did you contact any lawyer?",
                     "field": "Lawyer",
-                    "haveSubQuestion": false
+                    "haveSubQuestion": false,
+                    "awareness": null
                 },
                 {
                     "type": "text",
                     "length": null,
                     "question": "Do you want to add any extra information? Add if any.",
                     "field": "Extra Information ",
-                    "haveSubQuestion": false
+                    "haveSubQuestion": false,
+                    "awareness": "https://cybercrime.gov.in/Webform/CyberAware.aspx"
                 }
             ]
         }
@@ -106,7 +117,8 @@
                 "length": null,
                 "question": "So are you here to register complaint for phishing?" ,
                 "field": "confirm user",
-                "haveSubQuestion": false
+                "haveSubQuestion": false,
+                "awareness": "https://digitalguardian.com/blog/phishing-attack-prevention-how-identify-avoid-phishing-scams"
             },
             "questions": [
                 {
@@ -115,6 +127,7 @@
                     "question": "Where did the incident occurred? <br>Facebook<br>Instagram<br>WhatsApp<br>Email<br>SnapChat<br>Twitter<br>Youtube<br>Tinder<br>LinkedIn<br>Telegram<br>Reddit<br>Hike<br><Tumblr<br>Slack<br>WebSite<br>Other",
                     "field" : "Place of occurence",
                     "haveSubQuestion": true,
+                    "awareness": null,
                     "subQuestion" :[
                         {
                                 "answersKeywords": ["facebook","fb"],
@@ -124,14 +137,16 @@
                                         "length": 16,
                                         "question": "Enter your email/phone associated with Facebook account ?",
                                         "field": "Email/phoneno associated with Facebook",
-                                        "haveSubQuestion": false
+                                        "haveSubQuestion": false,
+                                        "awareness": null
                                     },
                                     {
                                         "type": "varchar",
                                         "length": null,
                                         "question": "Enter your facebook profile link?",
                                         "field":"Facebook Link ",
-                                        "haveSubQuestion": false
+                                        "haveSubQuestion": false,
+                                        "awareness": null
                                     }
                                 ]
                         },
@@ -143,14 +158,16 @@
                                         "length": 16,
                                         "question": "Enter your Instagram ID?",
                                         "field": "Instagram Id",
-                                        "haveSubQuestion": false
+                                        "haveSubQuestion": false,
+                                        "awareness": null
                                     },
                                     {
                                         "type": "text",
                                         "length": null,
                                         "question": "Share your Instagram profile link?",
                                         "field":"Instagram Link",
-                                        "haveSubQuestion": false
+                                        "haveSubQuestion": false,
+                                        "awareness": null
                                     }
                                 ]
                         }
@@ -161,7 +178,8 @@
                     "length": null,
                     "question": "When did it take place?",
                     "field" : "Time Of occurence ",
-                    "haveSubQuestion": false
+                    "haveSubQuestion": false,
+                    "awareness": null
                 },
                 {
                     "type": "text",
@@ -169,6 +187,7 @@
                     "question": "Did you reveal any Credit card / Debit card information?",
                     "field": "Card Details Revealed",
                     "haveSubQuestion": true,
+                    "awareness": "https://www.csoonline.com/article/2117843/what-is-phishing-how-this-cyber-attack-works-and-how-to-prevent-it.html",
                     "subQuestion":[
                         {
                                 "answersKeywords": ["true","yes"],
@@ -178,14 +197,16 @@
                                         "length": 16,
                                         "question": "Enter your credit card / debit card no.",
                                         "field": "Debit / Credit Card No",
-                                        "haveSubQuestion": false
+                                        "haveSubQuestion": false,
+                                        "awareness": null
                                     },
                                     {
                                         "type": "varchar",
                                         "length": null,
                                         "question": "Enter the expiry date of credit card / debit card ?",
                                         "field":"expiry Date ",
-                                        "haveSubQuestion": false
+                                        "haveSubQuestion": false,
+                                        "awareness": null
                                     }
                                 ]
                         }
@@ -196,7 +217,8 @@
                     "length": null,
                     "question": "If you want to provide any additional information please do so.",
                     "field": "Extra Information ",
-                    "haveSubQuestion": false
+                    "haveSubQuestion": false,
+                    "awareness": "https://cybercrime.gov.in/Webform/CyberAware.aspx"
                 }
             ]
         }
@@ -210,14 +232,16 @@
                 "length": null,
                 "question": "So are you here to register complaint for stalking?" ,
                 "field": "confirm user",
-                "haveSubQuestion": false
+                "haveSubQuestion": false,
+                "awareness": "https://victimsofcrime.org/stalking-resource-center/"
             },
             "questions": [
                 {
                     "type": "text",
                     "length": null,
                     "question": "On which website is the victim being stalked?",
-                    "haveSubQuestion": false
+                    "haveSubQuestion": false,
+                    "awareness": null
                 },
                 {
                     "type": "polar",
@@ -225,6 +249,7 @@
                     "question": "Is the stalker threatening you?",
                     "field": "Threats",
                     "haveSubQuestion": true,
+                    "awareness": "https://www.thebetterindia.com/45671/stalking-india-women-complaint-online/",
                     "subQuestion":[
                         {
                                 "answersKeywords": ["true","yes"],
@@ -234,7 +259,8 @@
                                         "length": null,
                                         "question": "What kind of threats is he/she giving you?",
                                         "field": "Kind of threats",
-                                        "haveSubQuestion": false
+                                        "haveSubQuestion": false,
+                                        "awareness": null
                                     }
                                 ]
                         }
@@ -246,6 +272,7 @@
                     "question": "Do you know the stalker?",
                     "field": "Stalker details",
                     "haveSubQuestion": true,
+                    "awareness": null,
                     "subQuestion":[
                         {
                                 "answersKeywords": ["true","yes"],
@@ -255,7 +282,8 @@
                                         "length": null,
                                         "question": "Enter all the details of stalker that you know",
                                         "field": "Details of stalker",
-                                        "haveSubQuestion": false
+                                        "haveSubQuestion": false,
+                                        "awareness": null
                                     }
                                 ]
                         }
@@ -267,6 +295,7 @@
                     "question": "Did you share any personal information with the stalker?",
                     "field": "Information shared",
                     "haveSubQuestion": true,
+                    "awareness": "https://www.stalkingawareness.org/stalking-awareness-month-2020/",
                     "subQuestion":[
                         {
                                 "answersKeywords": ["true","yes"],
@@ -276,7 +305,8 @@
                                         "length": null,
                                         "question": "What did you share?",
                                         "field": "Information shared with the stalker",
-                                        "haveSubQuestion": false
+                                        "haveSubQuestion": false,
+                                        "awareness": null
                                     }
                                 ]
                         }
@@ -287,7 +317,8 @@
                     "length": null,
                     "question": "Do you want to add any extra information? Add if any.",
                     "field": "Extra Information ",
-                    "haveSubQuestion": false
+                    "haveSubQuestion": false,
+                    "awareness": "https://cybercrime.gov.in/Webform/CyberAware.aspx"
                 }  
             ]
         }
@@ -301,7 +332,8 @@
                 "length": null,
                 "question": "So are you here to register complaint for sextortion?" ,
                 "field": "confirm user",
-                "haveSubQuestion": false
+                "haveSubQuestion": false,
+                "awareness": "https://staysafeonline.org/blog/sextortion-what-to-do/"
             },
             "questions": [
                 {
@@ -309,27 +341,31 @@
                     "length": null,
                     "question": "On which website did the sextortion take place?",
                     "field": "Website on which sextortion took place",
-                    "haveSubQuestion": false
+                    "haveSubQuestion": false,
+                    "awareness": null
                 },
                 {
                     "type": "text",
                     "length": null,
                     "question": "Who was being sextorted?",
                     "field": "The person being sextorted",
-                    "haveSubQuestion": false
+                    "haveSubQuestion": false,
+                    "awareness": "https://www.psni.police.uk/advice_information/sextortion/"
                 },
                 {
                     "type": "text",
                     "length": null,
                     "question": "What kind of private media did the victim share?",
                     "field": "Kind of private media shared",
-                    "haveSubQuestion": false
+                    "haveSubQuestion": false,
+                    "awareness": "https://www.fbi.gov/news/stories/stop-sextortion-youth-face-risk-online-090319"
                 },
                 {
                     "type": "polar",
                     "length": null,
                     "question": "Do you know the accused?",
                     "haveSubQuestion": true,
+                    "awareness": null,
                     "subQuestion":[
                         {
                                 "answersKeywords": ["true","yes"],
@@ -339,7 +375,8 @@
                                         "length": null,
                                         "question":"Enter all the information about the person who sextorted.",
                                         "field": "Information about the sextorter",
-                                        "haveSubQuestion": false
+                                        "haveSubQuestion": false,
+                                        "awareness": null
                                     }
                                 ]
                         }
@@ -350,7 +387,8 @@
                     "length": null,
                     "question": "Do you want to add any extra information? ",
                     "field": "Extra Information ",
-                    "haveSubQuestion": false
+                    "haveSubQuestion": false,
+                    "awareness": "https://cybercrime.gov.in/Webform/CyberAware.aspx"
                 }
             ]
         }

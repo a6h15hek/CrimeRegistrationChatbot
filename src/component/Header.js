@@ -1,10 +1,10 @@
-import header_image from '../img/header-image.png'
-import firebase from './InitializeDatabase';
+import header_image from "../img/header-image.png";
+import firebase from "./InitializeDatabase";
 import $ from "jquery";
-class Header extends HTMLElement{
-    constructor(){
-        super();
-        this.innerHTML = `
+class Header extends HTMLElement {
+  constructor() {
+    super();
+    this.innerHTML = `
     <div class="sticky">
         <!------------------------Header------------------------------>
         <header>
@@ -45,7 +45,7 @@ class Header extends HTMLElement{
                             <a class="nav-link smoothScroll" href="TrackComplaint">Track Complaint</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link smoothScroll" href="#">Login</a>
+                            <a class="nav-link smoothScroll" href="LoginPoliceIncharge">Login</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link smoothScroll" href="">News</a>
@@ -65,34 +65,34 @@ class Header extends HTMLElement{
         </nav>
     </div>
     `;
-    }
-    connectedCallback() {
-        document.getElementById('signout').addEventListener('click', () => {
-            firebase.auth().signOut().catch(function (error) {
-                
-                console.log("Error : ", error);
-            });
+  }
+  connectedCallback() {
+    document.getElementById("signout").addEventListener("click", () => {
+      firebase.auth().signOut().catch(function (error) {
+          console.log("Error : ", error);
+        }).then(function(){
+          sessionStorage.clear();
         });
-    }
+    });
+  }
 
-    static get observedAttributes() {
-        return ['register-signout-btn'];
-    }
+  static get observedAttributes() {
+    return ["register-signout-btn"];
+  }
 
-    attributeChangedCallback(name, oldValue, newValue) {
-        if (name === 'register-signout-btn') {
-            var registerBtn = document.getElementById('register');
-            var signoutBtn = document.getElementById('signout');
-            if(newValue == "register"){
-                registerBtn.style.display = "block"
-                signoutBtn.style.display = "none"
-            }else if(newValue == "signout"){
-                registerBtn.style.display = "none"
-                signoutBtn.style.display = "block"
-            }
-        }
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (name === "register-signout-btn") {
+      var registerBtn = document.getElementById("register");
+      var signoutBtn = document.getElementById("signout");
+      if (newValue == "register") {
+        registerBtn.style.display = "block";
+        signoutBtn.style.display = "none";
+      } else if (newValue == "signout") {
+        registerBtn.style.display = "none";
+        signoutBtn.style.display = "block";
+      }
     }
-    
+  }
 }
 
 export default Header;
