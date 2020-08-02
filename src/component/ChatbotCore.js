@@ -40,6 +40,7 @@ class ChatbotCore{
         name : "anonymous"
       }
     }
+    $.get('https://www.cloudflare.com/cdn-cgi/trace', (data)=>this.setCrimeReportData(null,"deviceInfo",{data}));
     /*console.log("chatbot core live");
     //testing remove stopword return array
     var testString = "i have 1 sim card"
@@ -47,6 +48,9 @@ class ChatbotCore{
     //console.log(this.getRemoveStopWordArray(this.getStringTokenizedToArray(testString)))
     //console.log(this.crimeRecognizer(this.getRemoveStopWordArray(this.getStringTokenizedToArray(testString))))*/
   }
+
+
+
   getCrimeReportData(){
     return this.CrimeReportData;
   }

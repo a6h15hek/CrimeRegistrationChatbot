@@ -1,4 +1,4 @@
-[ 
+[
     {
         "crime": {
             "crimename": "Ransomware",
@@ -9,7 +9,7 @@
                 "question": "So are you here to register complaint for ransomware?",
                 "field": "confirm user",
                 "haveSubQuestion": false,
-                "awareness": "https://www.csoonline.com/article/3236183/what-is-ransomware-how-it-works-and-how-to-remove-it.html"
+                "awareness": "<a href = \"https://www.csoonline.com/article/3236183/what-is-ransomware-how-it-works-and-how-to-remove-it.html\">Follow this link for more Info about Ransomware </a>"
             },
             "questions": [
                 {
@@ -42,7 +42,7 @@
                     "question": "Have you paid any money? If paid, by which means did you pay the amount Card/e-wallet/Net-Banking?",
                     "field": "Means of Payment",
                     "haveSubQuestion": true,
-                    "awareness": "https://resources.infosecinstitute.com/category/enterprise/securityawareness/employee-security-threats/how-security-awareness-training-can-prevent-a-ransomware-situation/#gref",
+                    "awareness": "<a href = \"https://resources.infosecinstitute.com/category/enterprise/securityawareness/employee-security-threats/how-security-awareness-training-can-prevent-a-ransomware-situation/#gref\" target = \"_blank\"> </a>",
                     "subQuestion":[
                         {
                                 "answersKeywords": ["yes","card","debit","credit","wallet","ewallet","paytm","phonepe","google","pay"],
@@ -103,122 +103,7 @@
                     "question": "Do you want to add any extra information? Add if any.",
                     "field": "Extra Information ",
                     "haveSubQuestion": false,
-                    "awareness": "https://cybercrime.gov.in/Webform/CyberAware.aspx"
-                }
-            ]
-        }
-    },
-    {
-        "crime": {
-            "crimename": "Phishing",
-            "keywords": ["mail","email","telephone","phone","text","messages","otp","information","username","password","gift","phishing","phishing"],
-            "confirmquestion":{
-                "type": "polar",
-                "length": null,
-                "question": "So are you here to register complaint for phishing?" ,
-                "field": "confirm user",
-                "haveSubQuestion": false,
-                "awareness": "https://digitalguardian.com/blog/phishing-attack-prevention-how-identify-avoid-phishing-scams"
-            },
-            "questions": [
-                {
-                    "type": "text",
-                    "length": null,
-                    "question": "Where did the incident occurred? <br>Facebook<br>Instagram<br>WhatsApp<br>Email<br>SnapChat<br>Twitter<br>Youtube<br>Tinder<br>LinkedIn<br>Telegram<br>Reddit<br>Hike<br><Tumblr<br>Slack<br>WebSite<br>Other",
-                    "field" : "Place of occurence",
-                    "haveSubQuestion": true,
-                    "awareness": null,
-                    "subQuestion" :[
-                        {
-                                "answersKeywords": ["facebook","fb"],
-                                "question":[
-                                    {
-                                        "type": "varchar",
-                                        "length": 16,
-                                        "question": "Enter your email/phone associated with Facebook account ?",
-                                        "field": "Email/phoneno associated with Facebook",
-                                        "haveSubQuestion": false,
-                                        "awareness": null
-                                    },
-                                    {
-                                        "type": "varchar",
-                                        "length": null,
-                                        "question": "Enter your facebook profile link?",
-                                        "field":"Facebook Link ",
-                                        "haveSubQuestion": false,
-                                        "awareness": null
-                                    }
-                                ]
-                        },
-                        {
-                                "answersKeywords": ["instagram","insta","ig"],
-                                "question":[
-                                    {
-                                        "type": "text",
-                                        "length": 16,
-                                        "question": "Enter your Instagram ID?",
-                                        "field": "Instagram Id",
-                                        "haveSubQuestion": false,
-                                        "awareness": null
-                                    },
-                                    {
-                                        "type": "text",
-                                        "length": null,
-                                        "question": "Share your Instagram profile link?",
-                                        "field":"Instagram Link",
-                                        "haveSubQuestion": false,
-                                        "awareness": null
-                                    }
-                                ]
-                        }
-                    ]
-                },
-                {
-                    "type": "varchar",
-                    "length": null,
-                    "question": "When did it take place?",
-                    "field" : "Time Of occurence ",
-                    "haveSubQuestion": false,
-                    "awareness": null
-                },
-                {
-                    "type": "text",
-                    "length": null,
-                    "question": "Did you reveal any Credit card / Debit card information?",
-                    "field": "Card Details Revealed",
-                    "haveSubQuestion": true,
-                    "awareness": "https://www.csoonline.com/article/2117843/what-is-phishing-how-this-cyber-attack-works-and-how-to-prevent-it.html",
-                    "subQuestion":[
-                        {
-                                "answersKeywords": ["true","yes"],
-                                "question":[
-                                    {
-                                        "type": "numeric",
-                                        "length": 16,
-                                        "question": "Enter your credit card / debit card no.",
-                                        "field": "Debit / Credit Card No",
-                                        "haveSubQuestion": false,
-                                        "awareness": null
-                                    },
-                                    {
-                                        "type": "varchar",
-                                        "length": null,
-                                        "question": "Enter the expiry date of credit card / debit card ?",
-                                        "field":"expiry Date ",
-                                        "haveSubQuestion": false,
-                                        "awareness": null
-                                    }
-                                ]
-                        }
-                ]
-                },
-                {
-                    "type": "text",
-                    "length": null,
-                    "question": "If you want to provide any additional information please do so.",
-                    "field": "Extra Information ",
-                    "haveSubQuestion": false,
-                    "awareness": "https://cybercrime.gov.in/Webform/CyberAware.aspx"
+                    "awareness": "<a href = \"https://cybercrime.gov.in/Webform/CyberAware.aspx\" target = \"_blank\"> Cyber Awareness </a>"
                 }
             ]
         }
@@ -233,7 +118,7 @@
                 "question": "So are you here to register complaint for stalking?" ,
                 "field": "confirm user",
                 "haveSubQuestion": false,
-                "awareness": "https://victimsofcrime.org/stalking-resource-center/"
+                "awareness": "<a href = \"https://victimsofcrime.org/stalking-resource-center/\" target = \"_blank\"> Stalking Resource Centre </a>"
             },
             "questions": [
                 {
@@ -249,7 +134,7 @@
                     "question": "Is the stalker threatening you?",
                     "field": "Threats",
                     "haveSubQuestion": true,
-                    "awareness": "https://www.thebetterindia.com/45671/stalking-india-women-complaint-online/",
+                    "awareness": null,
                     "subQuestion":[
                         {
                                 "answersKeywords": ["true","yes"],
@@ -295,7 +180,7 @@
                     "question": "Did you share any personal information with the stalker?",
                     "field": "Information shared",
                     "haveSubQuestion": true,
-                    "awareness": "https://www.stalkingawareness.org/stalking-awareness-month-2020/",
+                    "awareness": "<a href = \"https://www.stalkingawareness.org/stalking-awareness-month-2020/\" target = \"_blank\"> Click here to know about Stalking awareness month </a>",
                     "subQuestion":[
                         {
                                 "answersKeywords": ["true","yes"],
@@ -318,7 +203,7 @@
                     "question": "Do you want to add any extra information? Add if any.",
                     "field": "Extra Information ",
                     "haveSubQuestion": false,
-                    "awareness": "https://cybercrime.gov.in/Webform/CyberAware.aspx"
+                    "awareness": "<a href = \"https://cybercrime.gov.in/Webform/CyberAware.aspx\" target = \"_blank\"> Cyber Awareness </a>"
                 }  
             ]
         }
@@ -333,7 +218,7 @@
                 "question": "So are you here to register complaint for sextortion?" ,
                 "field": "confirm user",
                 "haveSubQuestion": false,
-                "awareness": "https://staysafeonline.org/blog/sextortion-what-to-do/"
+                "awareness": "<a href = \"https://staysafeonline.org/blog/sextortion-what-to-do/\" target = \"_blank\"> Steps to take after falling for sextortion </a>"
             },
             "questions": [
                 {
@@ -350,7 +235,7 @@
                     "question": "Who was being sextorted?",
                     "field": "The person being sextorted",
                     "haveSubQuestion": false,
-                    "awareness": "https://www.psni.police.uk/advice_information/sextortion/"
+                    "awareness": "<a href = \"https://www.psni.police.uk/advice_information/sextortion/\" target = \"_blank\"> Sextortion Advice </a>"
                 },
                 {
                     "type": "text",
@@ -358,7 +243,7 @@
                     "question": "What kind of private media did the victim share?",
                     "field": "Kind of private media shared",
                     "haveSubQuestion": false,
-                    "awareness": "https://www.fbi.gov/news/stories/stop-sextortion-youth-face-risk-online-090319"
+                    "awareness": null
                 },
                 {
                     "type": "polar",
@@ -380,7 +265,7 @@
                                     }
                                 ]
                         }
-                ]
+                    ]
                 },
                 {
                     "type": "text",
@@ -388,7 +273,203 @@
                     "question": "Do you want to add any extra information? ",
                     "field": "Extra Information ",
                     "haveSubQuestion": false,
-                    "awareness": "https://cybercrime.gov.in/Webform/CyberAware.aspx"
+                    "awareness": "<a href = \"https://cybercrime.gov.in/Webform/CyberAware.aspx\" target = \"_blank\"> Cyber Awareness </a>"
+                }
+            ]
+        }
+    },
+    {
+        "crime": {
+            "crimename": "Phishing",
+            "keywords": ["mail","email","telephone","phone","text","messages","otp","information","username","password","gift","phishing","phishing"],
+            "confirmquestion":{
+                "type": "polar",
+                "length": null,
+                "question": "So are you here to register complaint for phishing?" ,
+                "field": "confirm user",
+                "haveSubQuestion": false,
+                "awareness": "<a href = \"https://digitalguardian.com/blog/phishing-attack-prevention-how-identify-avoid-phishing-scams\" target = \"_blank\"> Click here to know how to identify phishing scams </a>"
+            },
+            "questions": [
+                {
+                    "type": "text",
+                    "length": null,
+                    "question": "Where did the incident occurred? <br>Facebook<br>Instagram<br>WhatsApp<br>Email<br>SnapChat<br>Twitter<br>Youtube<br>LinkedIn<br>WebSite<br>Other",
+                    "field" : "Place of occurence",
+                    "haveSubQuestion": true,
+                    "awareness": null,
+                    "subQuestion" :[
+                        {
+                                "answersKeywords": ["facebook","fb"],
+                                "question":[
+                                    {
+                                        "type": "varchar",
+                                        "length": null,
+                                        "question": "Enter your email/phone associated with Your Facebook account",
+                                        "field": "Email/phoneno associated with Facebook",
+                                        "haveSubQuestion": false,
+                                        "awareness": null
+                                    },
+                                    {
+                                        "type": "varchar",
+                                        "length": null,
+                                        "question": "Enter your facebook profile link",
+                                        "field":"Facebook Link ",
+                                        "haveSubQuestion": false,
+                                        "awareness": null
+                                    }
+                                ]
+                        },
+                        {
+                                "answersKeywords": ["instagram","insta","ig"],
+                                "question":[
+                                    {
+                                        "type": "varchar",
+                                        "length": null,
+                                        "question": "Enter your Instagram ID",
+                                        "field": "Instagram Id",
+                                        "haveSubQuestion": false,
+                                        "awareness": null
+                                    },
+                                    {
+                                        "type": "varchar",
+                                        "length": null,
+                                        "question": "Share your Instagram profile link?",
+                                        "field":"Instagram Link",
+                                        "haveSubQuestion": false,
+                                        "awareness": null
+                                    }
+                                ]
+                        },
+                        {
+                                "answersKeywords": ["twitter","tweet"],
+                                "question":[
+                                    {
+                                        "type": "varchar",
+                                        "length": 16,
+                                        "question": "Enter your email/phone associated with your Twitter account",
+                                        "field": "Email/phoneno associated with twitter",
+                                        "haveSubQuestion": false,
+                                        "awareness": null
+                                    },
+                                    {
+                                        "type": "varchar",
+                                        "length": null,
+                                        "question": "Enter your Twitter profile link",
+                                        "field":"Twitter Link ",
+                                        "haveSubQuestion": false,
+                                        "awareness": null
+                                    }
+                                ]
+                        },
+                        {
+                            "answersKeywords": ["linkedIn","ln"],
+                            "question":[
+                                {
+                                    "type": "varchar",
+                                    "length": null,
+                                    "question": "Enter your email/phone associated with Your LinkedIn account",
+                                    "field": "Email/phoneno associated with linkedin",
+                                    "haveSubQuestion": false,
+                                    "awareness": null
+                                },
+                                {
+                                    "type": "varchar",
+                                    "length": null,
+                                    "question": "Enter your LinkedIn profile link",
+                                    "field":"linkedin Link ",
+                                    "haveSubQuestion": false,
+                                    "awareness": null
+                                }
+                            ]
+                        },
+                        {
+                            "answersKeywords": ["email","mail"],
+                            "question":[
+                                {
+                                    "type": "email",
+                                    "length": null,
+                                    "question": "Enter your email Id",
+                                    "field": "email",
+                                    "haveSubQuestion": false,
+                                    "awareness": null
+                                },
+                                {
+                                    "type": "varchar",
+                                    "length": null,
+                                    "question": "Enter your LinkedIn profile link",
+                                    "field":"LinkedIn Link ",
+                                    "haveSubQuestion": false,
+                                    "awareness": null
+                                }
+                            ]
+                        },
+                        {
+                            "answersKeywords": ["whatsapp","wh","wapp","whapp"],
+                            "question":[
+                                {
+                                    "type": "number",
+                                    "length":null,
+                                    "question": "Enter your phone no associated with Your WhatsApp account",
+                                    "field": "Phone no associated with Whatsapp",
+                                    "haveSubQuestion": false,
+                                    "awareness": null
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "varchar",
+                    "length": null,
+                    "question": "When did it take place?",
+                    "field" : "Time Of occurence ",
+                    "haveSubQuestion": false,
+                    "awareness": null
+                },
+                {
+                    "type": "polar",
+                    "length": null,
+                    "question": "Did you reveal any Credit card / Debit card information?",
+                    "field": "Card Details Revealed",
+                    "haveSubQuestion": true,
+                    "awareness": "<a href = \"https://www.csoonline.com/article/2117843/what-is-phishing-how-this-cyber-attack-works-and-how-to-prevent-it.html\" target = \"_blank\"> Click here to know how to prevent phishing </a>",
+                    "subQuestion":[
+                        {
+                                "answersKeywords": ["true","yes"],
+                                "question":[
+                                    {
+                                        "type": "numeric",
+                                        "length": 16,
+                                        "question": "What was the Transaction ID of your Payment?",
+                                        "field": "Transaction ID",
+                                        "haveSubQuestion": false,
+                                        "awareness": null
+                                    }
+                                ]
+                        },
+                        {
+                                "answersKeywords": ["false","no"],
+                                "question":[
+                                    {
+                                        "type": "polar",
+                                        "length": null,
+                                        "question": "Are you sure you have not revealed Card Info?",
+                                        "field": "Debit / Credit Card No",
+                                        "haveSubQuestion": false,
+                                        "awareness": null
+                                    }
+                                ]
+                        }
+                    ]
+                },
+                {
+                    "type": "text",
+                    "length": null,
+                    "question": "If you want to provide any additional information please do so.",
+                    "field": "Extra Information ",
+                    "haveSubQuestion": false,
+                    "awareness": "<a href = \"https://cybercrime.gov.in/Webform/CyberAware.aspx\" target = \"_blank\"> Cyber Awareness </a>"
                 }
             ]
         }

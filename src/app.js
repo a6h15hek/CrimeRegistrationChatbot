@@ -16,6 +16,11 @@ import "font-awesome/css/font-awesome.min.css";
 import "normalize.css";
 import $ from "jquery";
 
+
+// var CryptoJS = require("crypto-js");
+// var message = "";
+// decryptMsg(message);
+
 var UrlPathArray = new String(window.location.pathname).slice(1).split("/");
 console.log(UrlPathArray);
 //defining htmltags from class
@@ -30,7 +35,6 @@ window.customElements.define("login-form", LoginForm); // to use <login-form/>
 const app = () => {
   document.getElementById("header").innerHTML = `<header-content/>`;
   document.getElementById("footer").innerHTML = Footer();
-
   //setting up the data change
   var headerControl = document.querySelector("header-content");
   switch (UrlPathArray[0]) {
@@ -147,3 +151,10 @@ const app = () => {
 };
 //initilizing app
 app();
+
+function decryptMsg(str){
+  var bytes = CryptoJS.AES.decrypt(str, 'conceptx');
+  var plaintext = bytes.toString(CryptoJS.enc.Utf8);
+  console.log(plaintext);
+  console.log(JSON.parse(plaintext))
+}

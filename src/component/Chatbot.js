@@ -1,3 +1,4 @@
+import dotenv from 'dotenv';
 import firebase from './InitializeDatabase';
 import 'firebase/firebase-firestore';
 import chatbot_avatar from '../img/chabot-avatar.jpg';
@@ -11,11 +12,16 @@ import 'malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css'
 import 'malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js'
 import ChatbotCore from './ChatbotCore';
 import { contains } from 'jquery';
+var CryptoJS = require("crypto-js");
+
+dotenv.config();
+
 class Chatbot extends HTMLElement{
     $ChatWindow = $('.messages-content');
     myDropzone = null;
     finalComplaintNo = null;
     finalCrimeData = null;
+    basicData=null;
     evidenceNo = 1;
     Chabot = null;
     i=0;
@@ -153,8 +159,16 @@ class Chatbot extends HTMLElement{
         if(response.chatbotSessionEnd != undefined && response.chatbotSessionEnd != null){
             if(response.chatbotSessionEnd == true){
                 this.finalCrimeData = response.crimeReportData;
+                console.log(this.finalCrimeData);
                 this.finalComplaintNo = this.getComplaintNo();
                 this.finalCrimeData['ComplaintNo'] = this.finalComplaintNo;
+                console.log()
+                this.basicData = {
+                    ComplaintNo: this.finalComplaintNo,
+                    NameOfComplainant: this.finalCrimeData.name,
+                    Subject: this.finalCrimeData.Subject,
+                    Date: new Date()
+                }
                 $("#SubmitComplaintModal").modal({
                     backdrop: "static",
                     keyboard: false,
@@ -253,7 +267,8 @@ class Chatbot extends HTMLElement{
         //$("#SubmitComplaintModal").modal("hide");
         var database = firebase.firestore();
         document.getElementById('submit-status').innerHTML = "⏲ Submitting..."
-        database.collection("complaints").doc().set(this.finalCrimeData).then(
+        this.basicData['data'] = (CryptoJS.AES.encrypt(JSON.stringify(this.finalCrimeData), process.env.ENCRYPTION_KEY)).toString();
+        database.collection("complaints").doc().set(this.basicData).then(
             ()=>this.onSubmissionSuccessfull()
         ).catch(function (error){
             document.getElementById('submit-status').innerHTML = "Submission error !!"+error; 
