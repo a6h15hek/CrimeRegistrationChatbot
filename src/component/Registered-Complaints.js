@@ -1,4 +1,6 @@
 import police from '../img/police.png';
+import firebase from './InitializeDatabase';
+import 'firebase/firebase-firestore';
 class RegistertedComplaints extends HTMLElement{
     constructor(){
         super();
@@ -113,6 +115,7 @@ class RegistertedComplaints extends HTMLElement{
                 <li><strong>Name</strong> : Akshit Panday</li>
                 <li><strong>Subject</strong> : Subject of the Complaint Here</li>
                 <li><strong>Date</strong> : 20/12/19</li>
+                <li><strong></strong> : 20/12/19</li>
                 <li><strong>Phone</strong> : XXXXXXXXXX</li>
                 <li><strong>Description</strong> : eujd jnn ubu inoimoim qonqam unednjnj ninon ninin ninim imoinninn
                     kokok okaokopk oksokok pafkkkkkkkkkd wodoko dlplaas kmkmk <strong><a style="color: #6900d3;"
@@ -127,6 +130,16 @@ class RegistertedComplaints extends HTMLElement{
         </div>
     </footer> `;
 
+    }
+    connectedcallback(){
+      var database = firebase.firestore().collection('complaints');
+      events.get().then((querySnapshot) => {
+      const tempDoc = []
+      querySnapshot.forEach((doc) => {
+         tempDoc.push({ id: doc.id, ...doc.data() })
+      })
+      console.log(tempDoc)
+   })
     }
 }
 export default RegistertedComplaints ;

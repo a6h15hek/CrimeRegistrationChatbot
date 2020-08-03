@@ -7,6 +7,7 @@ import Register from "./component/Register";
 import Chabot from "./component/Chatbot";
 import LoginForm from "./component/LoginForm";
 import Acknowledgement from "./component/Acknowledgement";
+import Dashboard from './component/Dashboard';
 //import TrackComplaint from './component/TrackComplaint';
 import PageNotFound from "./component/PageNotFound";
 import firebase from "./component/InitializeDatabase";
@@ -31,6 +32,7 @@ window.customElements.define("user-register", Register); // to use <user-registe
 window.customElements.define("homepage-content", Homepage); // to use <homepage-content/>
 window.customElements.define("acknowledgement-table", Acknowledgement); // to use <acknowledgement-table/>
 window.customElements.define("login-form", LoginForm); // to use <login-form/>
+window.customElements.define("dashboard-auth", Dashboard); // to use <dashboard-auth/>
 //window.customElements.define("track-complaint", TrackComplaint); // to use <track-complaint/>
 
 const app = () => {
@@ -105,7 +107,7 @@ const app = () => {
                                                                                 </div>
                                                                                 <div class="col">
                                                                                     2 of 2
-                                                                                </div>
+          C                                                                      </div>
                                                                             </div>
                                                                         </div>`;
       break;
@@ -136,7 +138,7 @@ const app = () => {
       firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
           // User is signed in.
-          document.getElementById("mainContent").innerHTML = `<h1>Dash Board</h1>`;
+          document.getElementById("mainContent").innerHTML = `<dashboard-auth/>`;
           headerControl.setAttribute("register-signout-btn", "signout");
         } else {
           // No user is signed in.
@@ -153,9 +155,3 @@ const app = () => {
 //initilizing app
 app();
 
-function decryptMsg(str){
-  var bytes = CryptoJS.AES.decrypt(str, 'conceptx');
-  var plaintext = bytes.toString(CryptoJS.enc.Utf8);
-  console.log(plaintext);
-  console.log(JSON.parse(plaintext))
-}
