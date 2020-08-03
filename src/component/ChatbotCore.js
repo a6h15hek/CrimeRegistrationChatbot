@@ -9,6 +9,8 @@ class ChatbotCore{
   chatbotState = "anonymousPersonGreeting";
   crimeIndex = null;
   
+  awarenessMessage =null;
+
   currentQuestion = null;
 
   totalQuestions = null;
@@ -235,6 +237,7 @@ class ChatbotCore{
     if(subQuestionSetNo  == null){
       var question = this.selectedCrimeData.questions[questionNo];
       var totalQuestion = this.selectedCrimeData.questions.length;
+      //console.log(question.awareness);
       return {
         isItSubQuestion: false,
         totalQuestion: totalQuestion,
@@ -243,18 +246,21 @@ class ChatbotCore{
         length: question.length,
         haveSubQuestion: question.haveSubQuestion,
         subQuestion: question.subQuestion,
-        field: question.field
+        field: question.field,
+        awareness: question.awareness
       }
     }else{
       var question = this.selectedCrimeData.questions[questionNo].subQuestion[subQuestionSetNo].question[subQuestionNo];
       var totalQuestion = this.selectedCrimeData.questions[questionNo].subQuestion[subQuestionSetNo].question.length;
+      //console.log(question.awareness);
       return {
         isItSubQuestion: true,
         totalQuestion: totalQuestion,
         question: question.question,
         type: question.type,
         length: question.length,
-        field: question.field
+        field: question.field,
+        awareness: question.awareness
       }
     }
   }
@@ -469,11 +475,20 @@ class ChatbotCore{
             this.chatbotState = "askingQuestionRelatedToCrime";
             this.currentQuestion = this.getQuestion(this.currentQuestionNumber, null, null);
             this.isSubQuestionStateActive = this.currentQuestion.haveSubQuestion;
-            return {
-              count: 2,
-              '0': this.chabotDialogue.crimeRecognizedMessage,
-              '1': this.currentQuestion.question
-            };
+            if (this.currentQuestion.awareness != null && this.currentQuestion.awareness != undefined) {
+              return {
+                count: 3,
+                '0': this.currentQuestion.awareness,
+                '1': this.chabotDialogue.crimeRecognizedMessage,
+                '2': this.currentQuestion.question
+              };
+            } else {
+              return {
+                count: 2,
+                '0': this.chabotDialogue.crimeRecognizedMessage,
+                '1': this.currentQuestion.question
+              };
+            } 
           }
         }
       case "askingQuestionRelatedToCrime":
@@ -528,10 +543,18 @@ class ChatbotCore{
                   }
                   this.currentQuestion = this.getQuestion(this.currentQuestionNumber, null, null);
                   this.isSubQuestionStateActive = this.currentQuestion.haveSubQuestion;
-                  return {
-                    count: 1,
-                    '0': this.currentQuestion.question
-                  };
+                  if (this.currentQuestion.awareness != null && this.currentQuestion.awareness != undefined) {
+                    return {
+                      count: 2,
+                      '0': this.currentQuestion.awareness,
+                      '1': this.currentQuestion.question
+                    };
+                  } else {
+                    return {
+                      count: 1,
+                      '0': this.currentQuestion.question,
+                    };
+                  } 
                   //end codes to join circle
                 }
               }
@@ -554,10 +577,18 @@ class ChatbotCore{
               }
               this.currentQuestion = this.getQuestion(this.currentQuestionNumber,null,null);
               this.isSubQuestionStateActive = this.currentQuestion.haveSubQuestion;
-              return {
-                count: 1,
-                '0': this.currentQuestion.question
-              };
+              if (this.currentQuestion.awareness != null && this.currentQuestion.awareness!= undefined){
+                return {
+                  count: 2,
+                  '0': this.currentQuestion.awareness,
+                  '1': this.currentQuestion.question
+                };
+              }else{
+                return {
+                  count: 1,
+                  '0': this.currentQuestion.question,
+                };
+              } 
             }
           }
       case "finalState":

@@ -42,7 +42,7 @@
                     "question": "Have you paid any money? If paid, by which means did you pay the amount Card/e-wallet/Net-Banking?",
                     "field": "Means of Payment",
                     "haveSubQuestion": true,
-                    "awareness": "<a href = \"https://resources.infosecinstitute.com/category/enterprise/securityawareness/employee-security-threats/how-security-awareness-training-can-prevent-a-ransomware-situation/#gref\" target = \"_blank\"> </a>",
+                    "awareness": "<a href = \"https://resources.infosecinstitute.com/category/enterprise/securityawareness/employee-security-threats/how-security-awareness-training-can-prevent-a-ransomware-situation/#gref\" target = \"_blank\">Follow this link to know more about Awareness training and know about prevention. </a>",
                     "subQuestion":[
                         {
                                 "answersKeywords": ["yes","card","debit","credit","wallet","ewallet","paytm","phonepe","google","pay"],
@@ -103,36 +103,51 @@
                     "question": "Do you want to add any extra information? Add if any.",
                     "field": "Extra Information ",
                     "haveSubQuestion": false,
-                    "awareness": "<a href = \"https://cybercrime.gov.in/Webform/CyberAware.aspx\" target = \"_blank\"> Cyber Awareness </a>"
+                    "awareness": "<a href = \"https://cybercrime.gov.in/Webform/CyberAware.aspx\" target = \"_blank\"> Know about Cyber Awareness details Click here !</a>"
                 }
             ]
         }
     },
     {
         "crime": {
-            "crimename": "Stalking",
-            "keywords": ["stalking","stalk", "stalks", "creep", "creeps", "follow", "follows", "monitors", "monitor", "monitoring"],
+            "crimename": "mobile theft",
+            "keywords": ["lost","mobile", "stolen", "phone", "stole", "snatched","snached", "fone", "robbed", "took", "away","cellphone","cell"],
             "confirmquestion":{
                 "type": "polar",
                 "length": null,
-                "question": "So are you here to register complaint for stalking?" ,
+                "question": "So are you here to register complaint for Mobile Theft?" ,
                 "field": "confirm user",
-                "haveSubQuestion": false,
-                "awareness": "<a href = \"https://victimsofcrime.org/stalking-resource-center/\" target = \"_blank\"> Stalking Resource Centre </a>"
+                "haveSubQuestion": false
             },
             "questions": [
                 {
                     "type": "text",
                     "length": null,
-                    "question": "On which website is the victim being stalked?",
+                    "question": "When did the incident happen?",
+                    "haveSubQuestion": false,
+                    "awareness": null
+                },
+                {
+                    "type": "text",
+                    "length": null,
+                    "question": "Where did the incident took place?",
+                    "field": "Place of Incident",
+                    "haveSubQuestion": false,
+                    "awareness": "Always keep your mobile close to you in crowded place."
+                },
+                {
+                    "type": "numeric",
+                    "length": 10,
+                    "question": "Enter your 10 digit mobile phone No?",
+                    "field": "stolen mobile No",
                     "haveSubQuestion": false,
                     "awareness": null
                 },
                 {
                     "type": "polar",
                     "length": null,
-                    "question": "Is the stalker threatening you?",
-                    "field": "Threats",
+                    "question": "Did you see the face of the thief?",
+                    "field": "Thief details",
                     "haveSubQuestion": true,
                     "awareness": null,
                     "subQuestion":[
@@ -142,54 +157,56 @@
                                     {
                                         "type": "text",
                                         "length": null,
-                                        "question": "What kind of threats is he/she giving you?",
-                                        "field": "Kind of threats",
+                                        "question": "Tell me the description of the thief ",
+                                        "field": "Details of thief",
                                         "haveSubQuestion": false,
                                         "awareness": null
                                     }
                                 ]
-                        }
-                ]
-                },
-                {
-                    "type": "polar",
-                    "length": null,
-                    "question": "Do you know the stalker?",
-                    "field": "Stalker details",
-                    "haveSubQuestion": true,
-                    "awareness": null,
-                    "subQuestion":[
+                        },
                         {
-                                "answersKeywords": ["true","yes"],
-                                "question":[
-                                    {
-                                        "type": "text",
-                                        "length": null,
-                                        "question": "Enter all the details of stalker that you know",
-                                        "field": "Details of stalker",
-                                        "haveSubQuestion": false,
-                                        "awareness": null
-                                    }
-                                ]
+                            "answersKeywords": ["false","no","n"],
+                            "question":[
+                                {
+                                    "type": "polar",
+                                    "length": null,
+                                    "question": "So you have not seen the theif ?",
+                                    "field": "confirming thief Description",
+                                    "haveSubQuestion": false,
+                                    "awareness": null
+                                }
+                            ]
                         }
-                ]
+                    ]
                 },
                 {
-                    "type": "polar",
+                    "type": "text",
                     "length": null,
-                    "question": "Did you share any personal information with the stalker?",
+                    "question": "Which model or Brand phone was it ?",
                     "field": "Information shared",
                     "haveSubQuestion": true,
-                    "awareness": "<a href = \"https://www.stalkingawareness.org/stalking-awareness-month-2020/\" target = \"_blank\"> Click here to know about Stalking awareness month </a>",
                     "subQuestion":[
                         {
-                                "answersKeywords": ["true","yes"],
+                                "answersKeywords": ["samsung","redmi","xiaomi","mi","motorola","moto","nokia","oneplus","oppo","vivo","apple","iphone","lenovo"],
                                 "question":[
                                     {
                                         "type": "text",
                                         "length": null,
-                                        "question": "What did you share?",
-                                        "field": "Information shared with the stalker",
+                                        "question": "What was the model?",
+                                        "field": "model of mobile",
+                                        "haveSubQuestion": false,
+                                        "awareness": null
+                                    }
+                                ]
+                        },
+                         {
+                                "answersKeywords": ["no"],
+                                "question":[
+                                    {
+                                        "type": "text",
+                                        "length": null,
+                                        "question": "So you don't know the model or brand name?",
+                                        "field": "Confirming mobile model",
                                         "haveSubQuestion": false,
                                         "awareness": null
                                     }
@@ -203,52 +220,60 @@
                     "question": "Do you want to add any extra information? Add if any.",
                     "field": "Extra Information ",
                     "haveSubQuestion": false,
-                    "awareness": "<a href = \"https://cybercrime.gov.in/Webform/CyberAware.aspx\" target = \"_blank\"> Cyber Awareness </a>"
+                    "awareness": "<a href = \"https://www.consumerreports.org/cro/2014/04/5-steps-to-protect-your-smart-phone-against-theft-or-loss/index.htm/\" target = \"_blank\"> Know more about Mobile Theft here !! </a>"
                 }  
             ]
         }
     },
     {
         "crime": {
-            "crimename": "sextortion",
-            "keywords": ["photo","photos","video","videos","photograph","sextortion","extortion","explicit","images","private","blackmail","black", "mail", "demand", "pay", "payment"],
+            "crimename": "Vehicle Theft ",
+            "keywords": ["vehicle","took","away","car","stolen","bike","ran","away","unknown","person","cycle","scooty","motorcycle","stolen","robbed","luna","rikshaw", "herohonda", "bullet", "jeep", "moped","two","wheeler","2","four","4","truck"],
             "confirmquestion":{
                 "type": "polar",
                 "length": null,
-                "question": "So are you here to register complaint for sextortion?" ,
+                "question": "So are you here to register complaint for Vehicle Theft?" ,
                 "field": "confirm user",
                 "haveSubQuestion": false,
-                "awareness": "<a href = \"https://staysafeonline.org/blog/sextortion-what-to-do/\" target = \"_blank\"> Steps to take after falling for sextortion </a>"
+                "awareness": "<a href = \"https://www.nhtsa.gov/road-safety/vehicle-theft-prevention\" target = \"_blank\"> know more about vehicle theft </a>"
             },
             "questions": [
                 {
                     "type": "text",
                     "length": null,
-                    "question": "On which website did the sextortion take place?",
-                    "field": "Website on which sextortion took place",
+                    "question": "Where did the incident take place?",
+                    "field": "Place of Incident",
                     "haveSubQuestion": false,
                     "awareness": null
                 },
                 {
                     "type": "text",
                     "length": null,
-                    "question": "Who was being sextorted?",
-                    "field": "The person being sextorted",
+                    "question": "When did the incident take place?",
+                    "field": "Time of Incident",
                     "haveSubQuestion": false,
-                    "awareness": "<a href = \"https://www.psni.police.uk/advice_information/sextortion/\" target = \"_blank\"> Sextortion Advice </a>"
+                    "awareness": "<a href = \"https://en.wikipedia.org/wiki/Motor_vehicle_theft\" target = \"_blank\"> Vehicle Theft Awareness </a>"
                 },
                 {
                     "type": "text",
                     "length": null,
-                    "question": "What kind of private media did the victim share?",
-                    "field": "Kind of private media shared",
+                    "question": "Tell me the vehicle company and model of vehicle",
+                    "field": "Vehicle details",
+                    "haveSubQuestion": false,
+                    "awareness": null
+                },
+                {
+                    "type": "alphanumeric",
+                    "length": null,
+                    "question": "Tell me the vehicle number",
+                    "field": "Vehicle details",
                     "haveSubQuestion": false,
                     "awareness": null
                 },
                 {
                     "type": "polar",
                     "length": null,
-                    "question": "Do you know the accused?",
+                    "question": "Did you see who stole your vehicle?",
                     "haveSubQuestion": true,
                     "awareness": null,
                     "subQuestion":[
@@ -258,13 +283,26 @@
                                     {
                                         "type": "text",
                                         "length": null,
-                                        "question":"Enter all the information about the person who sextorted.",
-                                        "field": "Information about the sextorter",
+                                        "question":"Enter all the details you remmember about the thief?",
+                                        "field": "Information about the thief",
                                         "haveSubQuestion": false,
                                         "awareness": null
                                     }
                                 ]
-                        }
+                        },
+                        {
+                            "answersKeywords": ["false","no"],
+                            "question":[
+                                {
+                                    "type": "text",
+                                    "length": null,
+                                    "question":"so you dont know the details about the thief?",
+                                    "field": "confirming the description of suspect",
+                                    "haveSubQuestion": false,
+                                    "awareness": null
+                                }
+                            ]
+                       }
                     ]
                 },
                 {
@@ -273,7 +311,7 @@
                     "question": "Do you want to add any extra information? ",
                     "field": "Extra Information ",
                     "haveSubQuestion": false,
-                    "awareness": "<a href = \"https://cybercrime.gov.in/Webform/CyberAware.aspx\" target = \"_blank\"> Cyber Awareness </a>"
+                    "awareness": "<a href = \"https://www.safercar.gov/Vehicle+Owners/Resources/Theft+Prevention\" target = \"_blank\"> Vehicle Theft Prevention </a>"
                 }
             ]
         }
@@ -363,7 +401,7 @@
                                 ]
                         },
                         {
-                            "answersKeywords": ["linkedIn","ln"],
+                            "answersKeywords": ["linkedin","ln","linkdin"],
                             "question":[
                                 {
                                     "type": "varchar",
@@ -408,10 +446,23 @@
                             "answersKeywords": ["whatsapp","wh","wapp","whapp"],
                             "question":[
                                 {
-                                    "type": "number",
+                                    "type": "numeric",
                                     "length":null,
                                     "question": "Enter your phone no associated with Your WhatsApp account",
                                     "field": "Phone no associated with Whatsapp",
+                                    "haveSubQuestion": false,
+                                    "awareness": null
+                                }
+                            ]
+                        },
+                        {
+                            "answersKeywords": ["youtube","yt"],
+                            "question":[
+                                {
+                                    "type": "email",
+                                    "length":null,
+                                    "question": "Enter your email associated with Your YouTube Account",
+                                    "field": "Email Id associated with Youtube",
                                     "haveSubQuestion": false,
                                     "awareness": null
                                 }
@@ -440,7 +491,7 @@
                                 "question":[
                                     {
                                         "type": "numeric",
-                                        "length": 16,
+                                        "length": 12,
                                         "question": "What was the Transaction ID of your Payment?",
                                         "field": "Transaction ID",
                                         "haveSubQuestion": false,

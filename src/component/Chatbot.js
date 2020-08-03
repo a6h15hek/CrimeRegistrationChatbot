@@ -1,4 +1,3 @@
-import dotenv from 'dotenv';
 import firebase from './InitializeDatabase';
 import 'firebase/firebase-firestore';
 import chatbot_avatar from '../img/chabot-avatar.jpg';
@@ -13,8 +12,6 @@ import 'malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js'
 import ChatbotCore from './ChatbotCore';
 import { contains } from 'jquery';
 var CryptoJS = require("crypto-js");
-
-dotenv.config();
 
 class Chatbot extends HTMLElement{
     $ChatWindow = $('.messages-content');

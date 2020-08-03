@@ -1,3 +1,4 @@
+require('dotenv').config();
 import "./scss/app.scss";
 import Header from "./component/Header";
 import Footer from "./component/Footer";
