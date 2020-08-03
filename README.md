@@ -26,7 +26,7 @@
 - Phishing
 - Cell Phone Missing / Theft
 - Vehical Missing / Theft
-- **more crime dataset can be added chabot automatically use it learn for themselves** 
+- **more crime dataset can be added, Chabot automatically use it learn for themselves** 
 
 ## Installation
 To install the application Linux subsystem enabled. 
