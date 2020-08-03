@@ -112,7 +112,7 @@ class Dashboard extends HTMLElement{
           console.log(decryptedCrimeDataObject);
           var template = ` <div class="card  mt-4 mb-4" style="width: 75%; margin: auto; border-color: #99b898; background-color: #f7f7f7;">
                                 <div class="card-body">
-                                    <h5 class="card-title text-center">Complaint Number : ${decryptedCrimeDataObject.ComplaintNo}</h5>
+                                      <h5 class="card-title text-center">Complaint Number : ${decryptedCrimeDataObject.ComplaintNo}</h5>
                                     <ul class= "questionList" style="list-style-type: none;">
                                         <li><strong>Name</strong> : ${decryptedCrimeDataObject.name}</li>
                                         <li><strong>Subject</strong> :${decryptedCrimeDataObject.Subject}</li>
