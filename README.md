@@ -28,6 +28,26 @@
 - Vehical Missing / Theft
 - **more crime dataset can be added, Chabot automatically use it learn for themselves** 
 
+## Firebase Setup
+In InitializeDatabase.js
+add the firebaseConfig variables
+
+`const firebaseConfig = {
+    apiKey: "**************************************",
+    authDomain:  "**************************************",
+    databaseURL:  "**************************************",
+    projectId:  "**************************************",
+    storageBucket:  "**************************************",
+    messagingSenderId:  "**************************************",
+    appId:  "**************************************",
+    measurementId:  "**************************************"
+}`
+
+## Encryption key Setup
+In .env file
+add the encryption key.
+`ENCRYPTION_KEY=(KeyforConceptx)`
+
 ## Installation
 To install the application Linux subsystem enabled. 
 nodejs package installed needed

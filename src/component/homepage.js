@@ -38,21 +38,33 @@ class Homepage extends HTMLElement{
 
             <div id="complaint-card" class="card">
                 <div class="card-body" style="padding: 10px;">
-                <h2 class="card-title">Registering complaint on National Crime Reporting Portal</h2>
+                <h2 class="card-title">Registering complaints to Chabot</h2>
                 <hr>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor 
-                    in reprehenderit in volu\ptate velit esse cillum dolore eufugiat nulla pariatur. 
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    in reprehenderit in voluptate velit esse cillum dolore eufugiat nulla pariatur. 
-                    in reprehenderit in voluptate velit esse cillum dolore eufugiat nulla pariatur. </p>
+                <p class="card-text"><h2 style="margin:5px 0px">Key Features</h2><br>
+           <strong>    * OTP verification for registering users<br>
+               * End to End Data Encryption for Crime Registeration<br>
+               * validation for user responses<br>
+               * Decision tree for questioning<br>
+               * Machine Learning implemented (Chabot can be trained by adding new dataset of crime, no explicit programming needed)<br>
+               * NLP (Natural Language Processing) implemented for processing user responses and validation purpose.<br>
+               * Crime Registering Anonymously<br>
+               * Stores the IP address and Some Information about device<br></strong>
+
+            <h2 style="margin:20px 0px 0px 0px">Dataset for Crime Available in Application</h2>
+
+           <strong>     * Ransomware<br>
+                * Phishing<br>
+                * Cell Phone Missing / Theft<br>
+                * Vehical Missing / Theft<br>
+                * more crime dataset can be added, Chabot automatically use it learn for themselves.<br>  </strong>  
+             </p>
                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
                 </p>
                     <div  style="padding-bottom: 30px; padding-top: 20px;">
                         <a  href="#" type="button" class="btn btn-primary btn-lg">Learn More</a>
-                        <a   href="RegisterComplaint" type="button" class="btn btn-primary btn-lg">Register </a>
-                        <a   href="RegisterComplaintAnonymously" type="button" class="btn btn-primary btn-lg">Register Crime Anonymously</a>
+                        <a   href="RegisterComplaint" type="button" class="btn btn-primary btn-lg">Register Complaint</a>
+                        <a   href="RegisterComplaintAnonymously" type="button" class="btn btn-primary btn-lg">Register Complaint Anonymously</a>
                     </div>
                 </div>
             </div>
