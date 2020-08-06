@@ -32,7 +32,8 @@
 In InitializeDatabase.js
 add the firebaseConfig variables
 
-`const firebaseConfig = {
+```
+const firebaseConfig = {
     apiKey: "**************************************",
     authDomain:  "**************************************",
     databaseURL:  "**************************************",
@@ -41,12 +42,15 @@ add the firebaseConfig variables
     messagingSenderId:  "**************************************",
     appId:  "**************************************",
     measurementId:  "**************************************"
-}`
+}
+```
 
 ## Encryption key Setup
 In .env file
 add the encryption key.
-`ENCRYPTION_KEY=(KeyforConceptx)`
+```
+ENCRYPTION_KEY=(KeyforConceptx)
+```
 
 ## Installation
 To install the application Linux subsystem enabled. 
