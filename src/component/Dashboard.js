@@ -120,12 +120,10 @@ class Dashboard extends HTMLElement{
                                         <li><strong>Phone</strong> : ${decryptedCrimeDataObject.phoneno}</li>
                                         <li><strong>State</strong> : ${decryptedCrimeDataObject.state}</li>
                                         <li><strong>Description</strong> :  ${decryptedCrimeDataObject.Description} </li>
-                                        <li><strong>Device Info</strong> :  ${decryptedCrimeDataObject.deviceInfo.data} </li>
-                                        <li><strong>${decryptedCrimeDataObject.crimeResponse[0].key}</strong> :  ${decryptedCrimeDataObject.crimeResponse[0].data} </li>
-                                        <li><strong>${decryptedCrimeDataObject.crimeResponse[1].key}</strong> :  ${decryptedCrimeDataObject.crimeResponse[1].data} </li>
-                                        <li><strong>${decryptedCrimeDataObject.crimeResponse[2].key}</strong> :  ${decryptedCrimeDataObject.crimeResponse[2].data} </li>
-                                        <li><strong>${decryptedCrimeDataObject.crimeResponse[3].key}</strong> :  ${decryptedCrimeDataObject.crimeResponse[2].data} </li>
-                                        <li><strong>${decryptedCrimeDataObject.crimeResponse[4].key}</strong> :  ${decryptedCrimeDataObject.crimeResponse[2].data} </li>
+                                        <li><strong>Device Info</strong> :  ${decryptedCrimeDataObject.deviceInfo.data} </li>`
+                                        for(var responseNo = 0;responseNo<decryptedCrimeDataObject.crimeResponse.length;responseNo++){`
+                                              <li><strong>${decryptedCrimeDataObject.crimeResponse[responseNo].key}</strong> :  ${decryptedCrimeDataObject.crimeResponse[responseNo].data} </li>
+                                        `}`
                                     </ul>
                                 </div>
                             </div>`;               
