@@ -1,4 +1,4 @@
-# Crime Registering Chabot https://crimereportingportal.web.app/ 
+# Crime Registering Chabot 
 ## Efficient Chabot Designing for crime registration purpose.
 
 ## Description
@@ -68,10 +68,10 @@ then visit to http://localhost:3000/ to view the web app.
 
 ## Contributer
 - Abhishek Yadav
-- Akshit Panday
-- Diksha Singh
-- Grace Lal
-- Sarthak Chafle
-- Vallabh Deshpande
+- Akshit Panday https://github.com/unscrewedakshit
+- Diksha Singh https://github.com/DikshaSingh10
+- Grace Lal https://github.com/GraceLal
+- Sarthak Chafle https://github.com/sarthakchafle
+- Vallabh Deshpande https://github.com/Vallabh43
 
 
