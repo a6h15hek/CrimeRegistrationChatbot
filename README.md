@@ -16,7 +16,7 @@
 - End to End Data Encryption for Crime Registeration
 - validation for user responses
 - Decision tree for questioning
-- Machine Learning implemented (Chabot can be trained by adding new dataset of crime, no explicit programming needed)
+- Chabot can be trained by adding new dataset of crime, no explicit programming needed
 - NLP (Natural Language Processing) implemented for processing user responses and validation purpose.
 - Crime Registering Anonymously
 - Stores the IP address and Some Information about device
